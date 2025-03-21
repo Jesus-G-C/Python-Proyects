@@ -1,0 +1,17 @@
+# Ignorar entornos virtuales
+venv/
+.venv/
+
+# Archivos de caché de Python
+__pycache__/
+*.pyc
+*.pyo 
+*.pyd
+
+# Configuraciones de VS Code
+Pipfile
+Pipfile.lock
+requirements.txt
+
+# Archivos de logs
+*.log 
