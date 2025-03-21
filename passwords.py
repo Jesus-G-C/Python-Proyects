@@ -7,17 +7,29 @@ def generate_password(lengt=12):
     
     return password
 
+def save_passwords(password):
+    with open('passwords.txt', 'a') as file:
+        file.write(password + '\n')
+    print('✅Contraseña guardada en "passwords.txt".✅')
+    
 if __name__ == '__main__':
     print('🔒 Generador de Contraseñas Seguras 🔒')
     
     try:
-        length = int(input('Ingrese la longitud de la contraseña (minimo 6): '))
-        if length < 6:
-            print('La longitud mínima es 6. Se usará 6 por defecto.')
-            length = 6
+        num_passwords = int(input('¿Cuantas contraseñas desea generar? '))
+        while num_passwords != 0:
+            length = int(input('Ingrese la longitud de la contraseña (minimo 6): '))
+            if length < 6:
+                print('⚠️ La longitud mínima es 6. Se usará 6 por defecto. ⚠️')
+                length = 6
+            password = generate_password(length)
+            print(f'Tu contraseña generada es: {password}\n')
             
-        password = generate_password(length)
-        print(f'Tu contraseña generada es: {password}')
+            save = input('¿Desea guardar su contraseña? (s/n): ').strip().lower()
+            if save == 's':
+                save_passwords(password)
+            
+            num_passwords = num_passwords - 1 
     
     except ValueError:
         print('⚠️ Error: Ingrese un número válido. ⚠️')
